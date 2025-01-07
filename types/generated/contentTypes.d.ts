@@ -708,6 +708,42 @@ export interface ApiLeagueLeague extends Schema.CollectionType {
   };
 }
 
+export interface ApiPlayerPlayer extends Schema.CollectionType {
+  collectionName: 'players';
+  info: {
+    singularName: 'player';
+    pluralName: 'players';
+    displayName: 'Player';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    firstSurname: Attribute.String;
+    secondSurname: Attribute.String;
+    nationality: Attribute.String;
+    dorsal: Attribute.Integer;
+    birthdate: Attribute.Date;
+    position: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::player.player',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::player.player',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiTeamTeam extends Schema.CollectionType {
   collectionName: 'teams';
   info: {
@@ -748,6 +784,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::league.league': ApiLeagueLeague;
+      'api::player.player': ApiPlayerPlayer;
       'api::team.team': ApiTeamTeam;
     }
   }
