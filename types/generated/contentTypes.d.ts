@@ -690,6 +690,11 @@ export interface ApiLeagueLeague extends Schema.CollectionType {
   attributes: {
     name: Attribute.String;
     logo: Attribute.Media;
+    teams: Attribute.Relation<
+      'api::league.league',
+      'oneToMany',
+      'api::team.team'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -750,6 +755,7 @@ export interface ApiTeamTeam extends Schema.CollectionType {
     singularName: 'team';
     pluralName: 'teams';
     displayName: 'Team';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -757,6 +763,11 @@ export interface ApiTeamTeam extends Schema.CollectionType {
   attributes: {
     name: Attribute.String;
     numberOfPlayers: Attribute.Integer;
+    league: Attribute.Relation<
+      'api::team.team',
+      'manyToOne',
+      'api::league.league'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
