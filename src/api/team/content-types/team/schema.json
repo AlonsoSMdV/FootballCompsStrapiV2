@@ -23,6 +23,12 @@
       "relation": "manyToOne",
       "target": "api::league.league",
       "inversedBy": "teams"
+    },
+    "players": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::player.player",
+      "mappedBy": "team"
     }
   }
 }

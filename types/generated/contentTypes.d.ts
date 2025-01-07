@@ -719,6 +719,7 @@ export interface ApiPlayerPlayer extends Schema.CollectionType {
     singularName: 'player';
     pluralName: 'players';
     displayName: 'Player';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -731,6 +732,11 @@ export interface ApiPlayerPlayer extends Schema.CollectionType {
     dorsal: Attribute.Integer;
     birthdate: Attribute.Date;
     position: Attribute.String;
+    team: Attribute.Relation<
+      'api::player.player',
+      'manyToOne',
+      'api::team.team'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -767,6 +773,11 @@ export interface ApiTeamTeam extends Schema.CollectionType {
       'api::team.team',
       'manyToOne',
       'api::league.league'
+    >;
+    players: Attribute.Relation<
+      'api::team.team',
+      'oneToMany',
+      'api::player.player'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

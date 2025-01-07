@@ -4,7 +4,8 @@
   "info": {
     "singularName": "player",
     "pluralName": "players",
-    "displayName": "Player"
+    "displayName": "Player",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -31,6 +32,12 @@
     },
     "position": {
       "type": "string"
+    },
+    "team": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::team.team",
+      "inversedBy": "players"
     }
   }
 }
