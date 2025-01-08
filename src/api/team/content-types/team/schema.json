@@ -35,6 +35,22 @@
       "relation": "manyToMany",
       "target": "plugin::users-permissions.user",
       "inversedBy": "teams"
+    },
+    "usuario": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::usuario.usuario",
+      "inversedBy": "teams"
+    },
+    "teamLogo": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

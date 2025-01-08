@@ -50,6 +50,16 @@
       "relation": "manyToOne",
       "target": "api::usuario.usuario",
       "inversedBy": "players"
+    },
+    "playerProfilePhoto": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

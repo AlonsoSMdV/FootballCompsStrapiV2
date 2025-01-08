@@ -721,6 +721,11 @@ export interface ApiLeagueLeague extends Schema.CollectionType {
       'manyToMany',
       'plugin::users-permissions.user'
     >;
+    usuario: Attribute.Relation<
+      'api::league.league',
+      'manyToOne',
+      'api::usuario.usuario'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -773,6 +778,7 @@ export interface ApiPlayerPlayer extends Schema.CollectionType {
       'manyToOne',
       'api::usuario.usuario'
     >;
+    playerProfilePhoto: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -820,6 +826,12 @@ export interface ApiTeamTeam extends Schema.CollectionType {
       'manyToMany',
       'plugin::users-permissions.user'
     >;
+    usuario: Attribute.Relation<
+      'api::team.team',
+      'manyToOne',
+      'api::usuario.usuario'
+    >;
+    teamLogo: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -854,6 +866,16 @@ export interface ApiUsuarioUsuario extends Schema.CollectionType {
       'api::usuario.usuario',
       'oneToMany',
       'api::player.player'
+    >;
+    leagues: Attribute.Relation<
+      'api::usuario.usuario',
+      'oneToMany',
+      'api::league.league'
+    >;
+    teams: Attribute.Relation<
+      'api::usuario.usuario',
+      'oneToMany',
+      'api::team.team'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
