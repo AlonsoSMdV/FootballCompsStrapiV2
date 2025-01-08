@@ -4,7 +4,8 @@
   "info": {
     "singularName": "league",
     "pluralName": "leagues",
-    "displayName": "League"
+    "displayName": "League",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,20 +16,27 @@
       "type": "string"
     },
     "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "teams": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::team.team",
       "mappedBy": "league"
+    },
+    "users_permissions_users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "leagues"
     }
   }
 }

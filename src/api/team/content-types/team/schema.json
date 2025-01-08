@@ -29,6 +29,12 @@
       "relation": "oneToMany",
       "target": "api::player.player",
       "mappedBy": "team"
+    },
+    "usuarios": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::usuario.usuario",
+      "inversedBy": "teams"
     }
   }
 }

@@ -660,6 +660,21 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
+    usuario: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::usuario.usuario'
+    >;
+    leagues: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'manyToMany',
+      'api::league.league'
+    >;
+    players: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'manyToMany',
+      'api::player.player'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -683,6 +698,7 @@ export interface ApiLeagueLeague extends Schema.CollectionType {
     singularName: 'league';
     pluralName: 'leagues';
     displayName: 'League';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -694,6 +710,11 @@ export interface ApiLeagueLeague extends Schema.CollectionType {
       'api::league.league',
       'oneToMany',
       'api::team.team'
+    >;
+    users_permissions_users: Attribute.Relation<
+      'api::league.league',
+      'manyToMany',
+      'plugin::users-permissions.user'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -736,6 +757,11 @@ export interface ApiPlayerPlayer extends Schema.CollectionType {
       'api::player.player',
       'manyToOne',
       'api::team.team'
+    >;
+    users_permissions_users: Attribute.Relation<
+      'api::player.player',
+      'manyToMany',
+      'plugin::users-permissions.user'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -795,6 +821,7 @@ export interface ApiUsuarioUsuario extends Schema.CollectionType {
     singularName: 'usuario';
     pluralName: 'usuarios';
     displayName: 'Usuario';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -803,6 +830,11 @@ export interface ApiUsuarioUsuario extends Schema.CollectionType {
     username: Attribute.String;
     email: Attribute.Email;
     password: Attribute.Password;
+    users_permissions_user: Attribute.Relation<
+      'api::usuario.usuario',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
