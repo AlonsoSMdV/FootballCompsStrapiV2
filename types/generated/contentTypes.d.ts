@@ -675,6 +675,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToMany',
       'api::player.player'
     >;
+    teams: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'manyToMany',
+      'api::team.team'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -805,10 +810,10 @@ export interface ApiTeamTeam extends Schema.CollectionType {
       'oneToMany',
       'api::player.player'
     >;
-    usuarios: Attribute.Relation<
+    users_permissions_users: Attribute.Relation<
       'api::team.team',
       'manyToMany',
-      'api::usuario.usuario'
+      'plugin::users-permissions.user'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -839,11 +844,6 @@ export interface ApiUsuarioUsuario extends Schema.CollectionType {
       'api::usuario.usuario',
       'oneToOne',
       'plugin::users-permissions.user'
-    >;
-    teams: Attribute.Relation<
-      'api::usuario.usuario',
-      'manyToMany',
-      'api::team.team'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
