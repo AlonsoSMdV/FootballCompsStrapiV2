@@ -768,6 +768,11 @@ export interface ApiPlayerPlayer extends Schema.CollectionType {
       'manyToMany',
       'plugin::users-permissions.user'
     >;
+    usuario: Attribute.Relation<
+      'api::player.player',
+      'manyToOne',
+      'api::usuario.usuario'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -844,6 +849,11 @@ export interface ApiUsuarioUsuario extends Schema.CollectionType {
       'api::usuario.usuario',
       'oneToOne',
       'plugin::users-permissions.user'
+    >;
+    players: Attribute.Relation<
+      'api::usuario.usuario',
+      'oneToMany',
+      'api::player.player'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
