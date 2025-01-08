@@ -805,6 +805,11 @@ export interface ApiTeamTeam extends Schema.CollectionType {
       'oneToMany',
       'api::player.player'
     >;
+    usuarios: Attribute.Relation<
+      'api::team.team',
+      'manyToMany',
+      'api::usuario.usuario'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -834,6 +839,11 @@ export interface ApiUsuarioUsuario extends Schema.CollectionType {
       'api::usuario.usuario',
       'oneToOne',
       'plugin::users-permissions.user'
+    >;
+    teams: Attribute.Relation<
+      'api::usuario.usuario',
+      'manyToMany',
+      'api::team.team'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
