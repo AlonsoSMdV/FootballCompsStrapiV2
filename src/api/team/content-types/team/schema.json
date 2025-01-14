@@ -43,14 +43,19 @@
       "inversedBy": "teams"
     },
     "teamLogo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "isFavourite": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

@@ -43,6 +43,10 @@
       "relation": "manyToOne",
       "target": "api::usuario.usuario",
       "inversedBy": "leagues"
+    },
+    "isFavourite": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
